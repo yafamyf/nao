@@ -1,0 +1,234 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/lights/protos/CeilingLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/softbank/nao/protos/NaoRoom.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/cabinet/protos/Cabinet.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/PaintedWood.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/softbank/nao/protos/VisualArmature.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/softbank/nao/protos/Key.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/softbank/nao/protos/KeyPot.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/school_furniture/protos/Book.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/plants/protos/BunchOfSunFlowers.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/tables/protos/Table.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/chairs/protos/Chair.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/living_room_furniture/protos/Sofa.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/chairs/protos/WoodenChair.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/softbank/nao/protos/Nao.proto"
+
+WorldInfo {
+  info [
+    "An Aldebaran's Nao H25 V5.0 robot in a living room"
+    "NAO is a programmable, 57-cm tall humanoid robot."
+    "The body has 25 degrees of freedom (DOF)."
+    "The sensors include 2 cameras, 4 microphones, sonar rangefinder, 2 IR emitters and receivers, 1 inertial board, and 8 pressure sensors."
+  ]
+  title "NAO room"
+  basicTimeStep 10
+  contactProperties [
+    ContactProperties {
+      material1 "key"
+      material2 "keyhole"
+      coulombFriction [
+        0.2
+      ]
+    }
+    ContactProperties {
+      material1 "NAO foot material"
+      coulombFriction [
+        7
+      ]
+      bounce 0.3
+      bounceVelocity 0.003
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.12003397117585744 0.03522026573151634 0.9921448375340944 2.575046275756999
+  position 2.2110584056853018 -1.798351998275922 1.1018607429444633
+}
+Background {
+  backUrl [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/softbank/nao/worlds/textures/cubic/brown_floor_side.png"
+  ]
+  bottomUrl [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/softbank/nao/worlds/textures/cubic/brown_floor_bottom.png"
+  ]
+  frontUrl [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/softbank/nao/worlds/textures/cubic/brown_floor_side.png"
+  ]
+  leftUrl [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/softbank/nao/worlds/textures/cubic/brown_floor_side.png"
+  ]
+  rightUrl [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/softbank/nao/worlds/textures/cubic/brown_floor_side.png"
+  ]
+  topUrl [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/softbank/nao/worlds/textures/cubic/brown_floor_top.png"
+  ]
+}
+CeilingLight {
+  translation 0 0 2
+  pointLightIntensity 2
+  pointLightCastShadows TRUE
+}
+NaoRoom {
+}
+Cabinet {
+  hidden position_6_0 2.0019177032315773e-06
+  hidden translation_7 -3.983816229428178e-07 -3.9873659929412497e-13 0
+  hidden rotation_7 0 0 1 2.0018643884357652e-06
+  hidden position_10_0 -1.7019312688049126e-06
+  hidden translation_11 -2.8788167411821196e-07 2.449707103835408e-13 0
+  hidden rotation_11 0 0 -1 1.701866571339329e-06
+  translation -0.2 1.99 0
+  rotation 0 0 1 -1.5707953071795862
+  primaryAppearance PaintedWood {
+    colorOverride 0.666667 0.333333 0
+  }
+  secondaryAppearance PaintedWood {
+    colorOverride 0.619608 0.615686 0.560784
+  }
+}
+DEF PAINTING_BIG VisualArmature {
+  translation -2 -0.6 1.3
+  dimension 0.02 0.6 0.4
+  textureUrl [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/softbank/nao/worlds/textures/nao_poster_5.jpg"
+  ]
+}
+DEF PAINTING_TOP VisualArmature {
+  translation -0.4 -2 1.3
+  rotation 0 0 1 1.5708
+  dimension 0.02 0.6 0.4
+  textureUrl [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/softbank/nao/worlds/textures/nao_poster_1.jpg"
+  ]
+}
+DEF PAINTING_MIDDLE VisualArmature {
+  translation 0.4 -2 1.3
+  rotation 0 0 1 1.5708
+  dimension 0.02 0.6 0.4
+  textureUrl [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/softbank/nao/worlds/textures/nao_poster_3.jpg"
+  ]
+}
+DEF PAINTING_VERTICAL VisualArmature {
+  translation 0.7 2 1.2
+  rotation 0 0 1 -1.5708
+  dimension 0.02 0.675 0.9
+  textureUrl [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/softbank/nao/worlds/textures/nao_poster_2.jpg"
+  ]
+}
+Key {
+  translation -0.3753771484628655 1.56 0.28998963883142953
+  rotation -3.2777800915567395e-15 1 -3.466586555493885e-15 1.5307692051840778
+  contactMaterial "key"
+}
+KeyPot {
+  translation 0.12 0.2 0.3
+}
+Book {
+  translation -0.18999789849810247 -0.1699200145641275 0.3099632124999944
+  rotation 0.6215269003889168 0.47687380320776857 0.6215269003889565 -2.2516404915576986
+  name "book(1)"
+}
+BunchOfSunFlowers {
+  translation -1.50435 -1.39292 0
+  name "bunch of sunflowers(1)"
+}
+BunchOfSunFlowers {
+  translation -1.02404 1.70659 0
+  rotation 0 0 1 -1.3118
+}
+Table {
+  rotation 0 0 1 1.5708
+  size 0.6 0.8 0.3
+}
+Chair {
+  translation -1.69 0 0
+  color 0.25098 0.756863 0.368627
+}
+Sofa {
+  translation 0 -1.44 0
+  rotation 0 0 1 1.5708
+}
+WoodenChair {
+  translation 1.70118 0.259722 0
+  rotation 0 0 1 -2.8798
+}
+Nao {
+  hidden position_0_0 2.0493366576181436e-17
+  hidden position2_0_0 -6.636037864113615e-09
+  hidden position_0_1 5.46207563970054e-07
+  hidden position2_0_1 2.5733438256063894e-12
+  hidden position_0_2 5.462075651756978e-07
+  hidden position2_0_2 -2.573730200533519e-12
+  hidden position_0_3 -3.6882337717258906e-07
+  hidden position_0_4 -3.6882333542820334e-07
+  hidden rotation_18 1.2866719127889151e-12 0.9999999999889019 4.7112929137664785e-06 5.46285592908365e-07
+  hidden position_18_0 8.49182265801022e-08
+  hidden rotation_19 1 0 0 8.429369702178807e-08
+  hidden position_19_0 9.34425458792812e-08
+  hidden rotation_20 0 0 0.9999999999999999 9.424321830774485e-08
+  hidden position_20_0 3.214027709308645e-08
+  hidden rotation_21 1 0 0 2.9802322387695313e-08
+  hidden position_21_0 -2.2161827928357525e-11
+  hidden position_21_1 -2.2161827928357525e-11
+  hidden position_21_2 7.576109604385279e-11
+  hidden position_22_0 4.0849879034998194e-11
+  hidden rotation_23 0 1 0 0.9599999999591504
+  hidden position_23_0 1.8730350603847064e-11
+  hidden position_25_0 4.085354830084943e-11
+  hidden rotation_26 0 1 0 0.9599999999591465
+  hidden position_26_0 1.8730710345021715e-11
+  hidden position_28_0 1.1121741916126589e-11
+  hidden rotation_30 -1.2868651002524736e-12 0.9999999999888987 -4.712000280840114e-06 5.46285592908365e-07
+  hidden position_30_0 -8.491822711675923e-08
+  hidden rotation_31 -1 0 0 8.429369702178807e-08
+  hidden position_31_0 -9.344254498554147e-08
+  hidden rotation_32 0 0 -0.9999999999999999 9.424321830774485e-08
+  hidden position_32_0 -3.214027680615969e-08
+  hidden rotation_33 -1 0 0 2.9802322387695313e-08
+  hidden position_33_0 -2.2161827928357525e-11
+  hidden position_33_1 -2.2160939749937825e-11
+  hidden position_33_2 7.576051768712737e-11
+  hidden position_34_0 4.085077448732588e-11
+  hidden rotation_35 0 1 0 0.9599999999591494
+  hidden position_35_0 1.8731682871476843e-11
+  hidden position_37_0 4.084981092018634e-11
+  hidden rotation_38 0 1 0 0.9599999999591504
+  hidden position_38_0 1.8731571849231265e-11
+  hidden position_40_0 1.1121556275182699e-11
+  hidden rotation_42 0 -0.7071067811865475 -0.7071067811865475 3.686343692795336e-07
+  hidden position_42_0 -2.6037381572982023e-07
+  hidden rotation_43 -1 0 0 2.598106231415675e-07
+  hidden position_43_0 -4.950877166010059e-07
+  hidden rotation_44 0 -1 0 4.951133646320162e-07
+  hidden position_44_0 -5.005096470611647e-07
+  hidden rotation_45 0 -1 0 5.004660971089217e-07
+  hidden position_45_0 -5.140834762329405e-07
+  hidden rotation_46 0 -1 0 5.144678503761327e-07
+  hidden position_46_0 -2.598661596534298e-07
+  hidden rotation_47 -1 0 0 2.598106231415675e-07
+  hidden translation_48 0.019999999053831985 -0.00699999516120553 -0.040987370898173746
+  hidden rotation_48 -8.087568224171002e-09 -2.784631272883084e-11 1 -3.1415853071819826
+  hidden rotation_52 0 -0.7071067811865475 0.7071067811865475 3.686343692795336e-07
+  hidden position_52_0 2.6037395601395217e-07
+  hidden rotation_53 1 0 0 2.598106231415675e-07
+  hidden position_53_0 -4.950876570930518e-07
+  hidden rotation_54 0 -1 0 4.951133646320162e-07
+  hidden position_54_0 -5.005095866650322e-07
+  hidden rotation_55 0 -1 0 5.004660971089217e-07
+  hidden position_55_0 -5.140834167249864e-07
+  hidden rotation_56 0 -1 0 5.144678503761327e-07
+  hidden position_56_0 2.5986630301765973e-07
+  hidden rotation_57 1 0 0 2.598106231415675e-07
+  hidden translation_58 0.01999999905388039 0.006999995161215411 -0.040987370899667544
+  hidden rotation_58 -8.088097354553467e-09 2.7868162316664612e-11 1 -3.141585307177191
+  translation -1.7456045831806621 0.9979709998578264 0.3335068286385707
+  rotation 5.502621689622376e-06 0.9999999999848604 -7.497213231186334e-10 7.726165819349238e-05
+  controller "nao_pp_s8"
+  cameraWidth 320
+  cameraHeight 240
+}
