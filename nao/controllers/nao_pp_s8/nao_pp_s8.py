@@ -39,6 +39,19 @@ VITESSE_MAPPING = {
     2: 1.0   # rapide
 }
 
+# Correspondance entre les libellés du jeu de données et
+# ceux utilisés pour commander les mouvements du robot.
+GESTE_MAPPING = {
+    "pas de cote_gauche": "fairePasGauche",
+    "pas de cote_droite": "fairePasDroite",
+    "tourner_gauche": "tournerGauche",
+    "tourner_droite": "tournerDroite",
+}
+
+def normaliser_geste(label: str) -> str:
+    """Renvoie un nom de geste compréhensible par NaoMotion."""
+    return GESTE_MAPPING.get(label, label)
+
 # Normalisation par l’épaule gauche
 def normaliser_par_epaules(X):
     X_norm  = X.copy()
@@ -61,6 +74,17 @@ def extract_landmarks(flat_vec, indices):
     for idx in indices:
         coords.extend([flat_vec[2*idx], flat_vec[2*idx + 1]])
     return np.array(coords).reshape(1, -1)
+
+def normaliser_bas_corps(X):
+    """Normalise les 20 coordonnées du bas du corps comme dans le dataset."""
+    keypoints = X.reshape(-1, 10, 2).astype(np.float32)
+    centre = (keypoints[:, 0] + keypoints[:, 1]) / 2
+    dist1 = np.linalg.norm(keypoints[:, 0] - keypoints[:, 2], axis=1)
+    dist2 = np.linalg.norm(keypoints[:, 1] - keypoints[:, 3], axis=1)
+    scale = (dist1 + dist2) / 2
+    scale[scale == 0] = 1e-5
+    keypoints = (keypoints - centre[:, None, :]) / scale[:, None, None]
+    return keypoints.reshape(X.shape)
 
 # Landmarks bas du corps MediaPipe
 LANDMARKS_BAS_CORPS = [23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
@@ -110,19 +134,19 @@ try:
             vec50_norm = vec66_norm[:, :50]
 
             # Sous-vecteur pour vitesse (bas du corps uniquement)
-            vec16_norm = extract_landmarks(vec66_norm, LANDMARKS_BAS_CORPS)
+            vec20 = extract_landmarks(vec66, LANDMARKS_BAS_CORPS)
+            vec20_norm = normaliser_bas_corps(vec20)
 
             # Prédiction geste
             geste_enc = geste_model.predict(vec50_norm)[0]
             geste_label = label_encoder.inverse_transform([geste_enc])[0]
-            
-            vitesse_fac = 0
+            geste_label = normaliser_geste(geste_label)
+
             # Prédiction vitesse
-            vitesse_int = int(vitesse_fac * 10)
-            vitesse_enc = vitesse_model.predict(vec16_norm)[0]
+            vitesse_enc = vitesse_model.predict(vec20_norm)[0]
             vitesse_fac = VITESSE_MAPPING.get(int(vitesse_enc), 0.5)
-            
-            vitesse_int = int(vitesse_enc) +1
+
+            vitesse_int = int(vitesse_enc) + 1
 
 
             print(f"🎯 Geste : {geste_label:<15} | Vitesse (coeff) : {vitesse_fac:.2f} | Vitesse (int) : {vitesse_int}")
